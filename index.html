@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#09261b">
+<title>Students Club | Cricket Attendance</title>
+<style>
+:root{--bg:#071910;--panel:#102b20;--panel2:#183d2b;--line:#2b5940;--green:#82f0a0;--lime:#d8ff7d;--white:#f3fff6;--muted:#b0cabb;--red:#ff8282;--gold:#ffd66b;--blue:#90d9ff}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at top,#1a4a31 0,#071910 62%);color:var(--white);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}header{text-align:center;padding:26px 14px 22px;border-bottom:1px solid #ffffff18;background:#06140d88}.logo{margin:0 auto 8px;width:60px;height:60px;border:2px solid var(--green);border-radius:50%;display:grid;place-items:center;font-size:30px;background:#123a27;box-shadow:0 0 24px #82f0a020}h1{font-size:clamp(27px,6vw,42px);margin:0;letter-spacing:1px}h1 span{color:var(--green)}header p{margin:7px 0 0;color:var(--muted);font-size:13px;letter-spacing:1.2px}main{width:min(100% - 24px,1000px);margin:22px auto 44px}.panel{background:linear-gradient(145deg,#102b20,#0b2218);border:1px solid #ffffff18;border-radius:17px;padding:18px;margin-bottom:15px;box-shadow:0 10px 28px #0002}.notice{background:#382f16;border:1px solid #79652b;color:#ffedb0;border-radius:11px;padding:12px 14px;font-size:13px;line-height:1.5;margin-bottom:15px}.notice strong{color:#fff3c2}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:11px}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:15px}.stat{background:var(--panel2);padding:13px 15px;border-radius:12px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:26px;margin-top:4px}.field{display:flex;flex-direction:column;gap:6px;margin:10px 0}.field label{font-size:13px;color:var(--muted)}input,select{width:100%;min-width:0;background:#071910;color:var(--white);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font:inherit}button{border:0;border-radius:10px;padding:10px 13px;font:inherit;font-weight:750;cursor:pointer;transition:filter .15s,transform .15s}button:hover{filter:brightness(1.08)}button:active{transform:translateY(1px)}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--lime);outline-offset:2px}.primary{background:var(--green);color:#082014}.secondary{background:#254b37;color:var(--white)}.danger{background:#5a2929;color:#ffe8e8}.gold{background:#70591b;color:#fff2bf}.blue{background:#173e50;color:#dff5ff}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.muted{color:var(--muted)}h2{font-size:21px;margin:0 0 8px}h3{font-size:17px;margin:0 0 8px}.small{font-size:12px;color:var(--muted);line-height:1.5}.actions{display:flex;gap:6px;flex-wrap:wrap}.actions button{padding:8px 9px;font-size:12px}.student{display:grid;grid-template-columns:minmax(130px,1fr) auto;gap:12px;align-items:center;border-bottom:1px solid #ffffff13;padding:12px 0}.student:last-child{border-bottom:0}.student-name{font-weight:750;overflow-wrap:anywhere}.student-sub{font-size:12px;color:var(--muted);margin-top:3px}.status-chip{display:inline-block;font-size:11px;font-weight:800;border-radius:30px;padding:4px 8px;margin-top:5px;background:#294735;color:var(--white)}.status-chip.Present{background:#1c5b34;color:#caffd4}.status-chip.Absent{background:#612e2e;color:#ffdada}.status-chip.Leave{background:#5a481d;color:#fff0b3}.status-chip.Unmarked{background:#293b32;color:#cfddd4}.message{min-height:18px;font-size:13px;margin:9px 0 0}.success{color:var(--green)}.error{color:var(--red)}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.days{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:7px;margin-top:14px}.day{border:1px solid var(--line);border-radius:9px;text-align:center;padding:9px 5px;background:#091e15;font-size:12px;min-height:58px}.day small{display:block;color:#c7d9cd;margin-bottom:5px}.day.Present{background:#164b2b;border-color:#398a55}.day.Absent{background:#512b2b;border-color:#9d4949}.day.Leave{background:#4b3c1b;border-color:#90762b}.day.Unmarked{opacity:.72}.empty{padding:15px 0;color:var(--muted)}.foot{text-align:center;color:#7fa18d;font-size:12px;padding:12px}.hidden{display:none!important}@media(max-width:580px){.panel{padding:14px}.student{grid-template-columns:1fr}.student .actions{justify-content:flex-start}.student .actions button{flex:1}.row.date-row{align-items:flex-start}.row.date-row .field{width:100%}}
+</style>
+</head>
+<body>
+<header><div class="logo">🏏</div><h1>STUDENTS <span>CLUB</span></h1><p>CRICKET ACADEMY · TRAIN HARD · PLAY FAIR</p></header>
+<main>
+  <div class="notice"><strong>Local-only edition:</strong> Attendance is saved in this browser on this device. It does not sync to parents' phones or other computers. Use <strong>Export backup</strong> regularly. Do not use this edition for private, shared student records.</div>
+  <section class="stats" aria-label="Attendance summary"><div class="stat"><small>Active Players</small><strong id="statStudents">0</strong></div><div class="stat"><small>Present today</small><strong id="statPresent">0</strong></div><div class="stat"><small>Absent today</small><strong id="statAbsent">0</strong></div><div class="stat"><small>Leave today</small><strong id="statLeave">0</strong></div></section>
+  <section class="panel"><div class="row"><div><h2>➕ Add a Student</h2><div class="small">Add each player to the academy roster.</div></div></div><form id="addForm"><div class="grid"><div class="field"><label for="studentName">Student full name</label><input id="studentName" name="studentName" maxlength="80" placeholder="Enter player's name" required></div><div class="field" style="justify-content:end"><label aria-hidden="true">&nbsp;</label><button class="primary" type="submit">Add student</button></div></div></form><p class="message" id="addMsg" aria-live="polite"></p></section>
+  <section class="panel"><div class="row date-row"><div><h2>🗓️ Mark Attendance</h2><div class="small">Choose the date, then select Present, Absent, or Leave for each player.</div></div><div class="field" style="min-width:165px;margin:0"><label for="attendanceDate">Attendance date</label><input type="date" id="attendanceDate"></div></div><div id="attendanceList"></div><p class="message" id="attendanceMsg" aria-live="polite"></p></section>
+  <section class="panel"><h2>👥 Manage Students</h2><div class="small">Removing a student permanently deletes their saved attendance from this browser.</div><div id="manageList"></div></section>
+  <section class="panel"><h2>📅 Last 30 Days</h2><div class="grid"><div class="field"><label for="reportStudent">Select a student</label><select id="reportStudent"><option value="">Add a student first</option></select></div><div class="field"><label for="reportEndDate">Report ending date</label><input type="date" id="reportEndDate"></div></div><div id="reportSummary" class="stats"></div><div id="reportGrid" class="days"></div><p id="reportMsg" class="small"></p></section>
+  <section class="panel"><h2>💾 Backup & Restore</h2><p class="small">Export a backup file before changing devices or clearing browser data. Restore will replace the current local roster and attendance with the chosen backup.</p><div class="toolbar"><button class="primary" id="exportBtn" type="button">Export backup</button><button class="secondary" id="importBtn" type="button">Restore backup</button><input id="importFile" type="file" accept="application/json,.json" class="hidden" aria-label="Choose a backup file"></div><p class="message" id="backupMsg" aria-live="polite"></p></section>
+  <div class="foot">Students Club · Cricket Academy · Keep the game fair.</div>
+</main>
+<script>
+(() => {
+  "use strict";
+  const STORAGE_KEY = "studentsClubLocalAttendanceV1";
+  const $ = id => document.getElementById(id);
+  const todayISO = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+  const parseISO = value => new Date(`${value}T00:00:00`);
+  const fmtDate = value => parseISO(value).toLocaleDateString(undefined,{weekday:"short",day:"2-digit",month:"short"});
+  const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const newId = () => (crypto && crypto.randomUUID) ? crypto.randomUUID() : `s_${Date.now()}_${Math.random().toString(36).slice(2,10)}`;
+  let data = { version: 1, students: [], attendance: {} };
+  let storageAvailable = true;
+  function setMessage(id, text, kind="") { $(id).textContent = text; $(id).className = `message ${kind}`.trim(); }
+  function save() {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); storageAvailable = true; }
+    catch (error) { storageAvailable = false; setMessage("backupMsg", "Could not save in this browser. Export your data if possible and check browser storage settings.", "error"); }
+  }
+  function load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && Array.isArray(parsed.students) && parsed.attendance && typeof parsed.attendance === "object") data = {version:1, students:parsed.students, attendance:parsed.attendance};
+      }
+    } catch (error) { setMessage("backupMsg", "Saved data could not be read. Restore a JSON backup if you have one.", "error"); }
+  }
+  function studentsSorted() { return [...data.students].sort((a,b) => a.name.localeCompare(b.name)); }
+  function recordsForDate(date) { return data.attendance[date] || {}; }
+  function countStatus(date, status) { return Object.values(recordsForDate(date)).filter(v => v === status).length; }
+  function renderStats() {
+    const today = $("attendanceDate").value || todayISO();
+    $("statStudents").textContent = data.students.length;
+    $("statPresent").textContent = countStatus(today,"Present");
+    $("statAbsent").textContent = countStatus(today,"Absent");
+    $("statLeave").textContent = countStatus(today,"Leave");
+  }
+  function renderAttendance() {
+    const date = $("attendanceDate").value || todayISO();
+    const students = studentsSorted();
+    const record = recordsForDate(date);
+    if (!students.length) { $("attendanceList").innerHTML = '<div class="empty">No players yet. Add a student above to start recording attendance.</div>'; return; }
+    $("attendanceList").innerHTML = students.map(s => {
+      const status = record[s.id] || "Unmarked";
+      return `<div class="student"><div><div class="student-name">${escapeHTML(s.name)}</div><span class="status-chip ${status}">${status === "Unmarked" ? "Not marked yet" : status}</span></div><div class="actions"><button type="button" class="${status === "Present" ? "primary" : "secondary"}" data-mark="Present" data-id="${escapeHTML(s.id)}">Present</button><button type="button" class="${status === "Absent" ? "danger" : "secondary"}" data-mark="Absent" data-id="${escapeHTML(s.id)}">Absent</button><button type="button" class="${status === "Leave" ? "gold" : "secondary"}" data-mark="Leave" data-id="${escapeHTML(s.id)}">Leave</button><button type="button" class="secondary" data-clear="1" data-id="${escapeHTML(s.id)}" title="Clear this student's attendance for selected date">Clear</button></div></div>`;
+    }).join("");
+    $("attendanceList").querySelectorAll("[data-mark]").forEach(btn => btn.addEventListener("click", () => {
+      const d = $("attendanceDate").value || todayISO();
+      data.attendance[d] ||= {};
+      data.attendance[d][btn.dataset.id] = btn.dataset.mark;
+      if (!Object.keys(data.attendance[d]).length) delete data.attendance[d];
+      save(); renderAll(); setMessage("attendanceMsg", `Saved ${btn.dataset.mark} for ${students.find(s=>s.id===btn.dataset.id)?.name || "student"} on ${fmtDate(d)}.`, "success");
+    }));
+    $("attendanceList").querySelectorAll("[data-clear]").forEach(btn => btn.addEventListener("click", () => {
+      const d = $("attendanceDate").value || todayISO();
+      if (data.attendance[d]) { delete data.attendance[d][btn.dataset.id]; if (!Object.keys(data.attendance[d]).length) delete data.attendance[d]; }
+      save(); renderAll(); setMessage("attendanceMsg", "Attendance mark cleared.", "success");
+    }));
+  }
+  function renderManage() {
+    const students = studentsSorted();
+    if (!students.length) { $("manageList").innerHTML = '<div class="empty">No students have been added.</div>'; return; }
+    $("manageList").innerHTML = students.map(s => `<div class="student"><div><div class="student-name">${escapeHTML(s.name)}</div><div class="student-sub">Attendance entries: ${Object.values(data.attendance).filter(day=>day[s.id]).length}</div></div><button class="danger" type="button" data-remove="${escapeHTML(s.id)}">Remove</button></div>`).join("");
+    $("manageList").querySelectorAll("[data-remove]").forEach(btn => btn.addEventListener("click", () => {
+      const s = data.students.find(x=>x.id===btn.dataset.remove);
+      if (!s || !confirm(`Permanently remove ${s.name} and all their attendance records from this browser? Export a backup first if you want to keep them.`)) return;
+      data.students = data.students.filter(x=>x.id!==s.id);
+      for (const date of Object.keys(data.attendance)) { delete data.attendance[date][s.id]; if (!Object.keys(data.attendance[date]).length) delete data.attendance[date]; }
+      save(); renderAll(); setMessage("attendanceMsg", `${s.name} and their attendance records were removed.`, "success");
+    }));
+  }
+  function renderReportOptions() {
+    const select = $("reportStudent"); const old = select.value;
+    const students = studentsSorted();
+    select.innerHTML = students.length ? students.map(s=>`<option value="${escapeHTML(s.id)}">${escapeHTML(s.name)}</option>`).join("") : '<option value="">Add a student first</option>';
+    if (students.some(s=>s.id===old)) select.value = old;
+  }
+  function renderReport() {
+    const id = $("reportStudent").value;
+    const end = $("reportEndDate").value || todayISO();
+    const s = data.students.find(x=>x.id===id);
+    if (!s) { $("reportSummary").innerHTML=""; $("reportGrid").innerHTML='<div class="empty">Add a student to view a 30-day report.</div>'; $("reportMsg").textContent=""; return; }
+    const dates=[]; const endDate=parseISO(end);
+    for(let i=29;i>=0;i--){const d=new Date(endDate);d.setDate(d.getDate()-i);dates.push(`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`);}
+    let present=0,absent=0,leave=0,unmarked=0;
+    const cells=dates.map(date=>{const status=data.attendance[date]?.[id]||"Unmarked";if(status==="Present")present++;else if(status==="Absent")absent++;else if(status==="Leave")leave++;else unmarked++;return `<div class="day ${status}"><small>${escapeHTML(fmtDate(date))}</small><strong>${status==="Unmarked"?"—":escapeHTML(status)}</strong></div>`;});
+    $("reportSummary").innerHTML=`<div class="stat"><small>Present</small><strong>${present}</strong></div><div class="stat"><small>Absent</small><strong>${absent}</strong></div><div class="stat"><small>Leave</small><strong>${leave}</strong></div><div class="stat"><small>Unmarked</small><strong>${unmarked}</strong></div>`;
+    $("reportGrid").innerHTML=cells.join("");
+    $("reportMsg").textContent=`${s.name} · ${fmtDate(dates[0])} – ${fmtDate(dates[dates.length-1])}. “Unmarked” means no attendance was recorded for that date.`;
+  }
+  function renderAll() { renderStats(); renderAttendance(); renderManage(); renderReportOptions(); renderReport(); }
+  $("addForm").addEventListener("submit", event => {
+    event.preventDefault(); const name=$("studentName").value.trim();
+    if(name.length<2){setMessage("addMsg","Enter a student name with at least 2 characters.","error");return;}
+    if(data.students.some(s=>s.name.toLocaleLowerCase()===name.toLocaleLowerCase())){setMessage("addMsg","A student with that name already exists. Add a distinguishing detail if needed.","error");return;}
+    data.students.push({id:newId(),name,createdAt:new Date().toISOString()}); save(); $("studentName").value=""; renderAll(); setMessage("addMsg",`${name} added successfully.`,"success");
+  });
+  $("attendanceDate").addEventListener("change",()=>{renderAll();setMessage("attendanceMsg","");});
+  $("reportStudent").addEventListener("change",renderReport);
+  $("reportEndDate").addEventListener("change",renderReport);
+  $("exportBtn").addEventListener("click",()=>{
+    const payload={app:"Students Club Local Attendance",version:1,exportedAt:new Date().toISOString(),data};
+    const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}); const url=URL.createObjectURL(blob); const a=document.createElement("a");a.href=url;a.download=`students-club-attendance-backup-${todayISO()}.json`;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);setMessage("backupMsg","Backup exported. Keep the JSON file somewhere safe.","success");
+  });
+  $("importBtn").addEventListener("click",()=>$("importFile").click());
+  $("importFile").addEventListener("change",async event=>{
+    const file=event.target.files?.[0]; if(!file)return;
+    try {
+      const parsed=JSON.parse(await file.text()); const incoming=parsed.data||parsed;
+      if(!incoming||!Array.isArray(incoming.students)||!incoming.attendance||typeof incoming.attendance!=="object")throw new Error("This file does not look like a Students Club backup.");
+      const ids=new Set(); for(const s of incoming.students){if(!s||typeof s.id!=="string"||typeof s.name!=="string")throw new Error("Backup has an invalid student entry.");if(ids.has(s.id))throw new Error("Backup contains duplicate student IDs.");ids.add(s.id);}
+      if(!confirm(`Restore ${incoming.students.length} student(s)? This will replace the roster and attendance currently stored in this browser.`))return;
+      data={version:1,students:incoming.students,attendance:incoming.attendance};save();renderAll();setMessage("backupMsg","Backup restored successfully.","success");
+    } catch(error){setMessage("backupMsg",error.message||"Could not restore backup.","error");}
+    finally{event.target.value="";}
+  });
+  $("attendanceDate").value=todayISO(); $("reportEndDate").value=todayISO();
+  load(); renderAll();
+  if(!storageAvailable) setMessage("backupMsg","Browser storage may be unavailable. Export a backup regularly.","error");
+})();
+</script>
+</body>
+</html>
